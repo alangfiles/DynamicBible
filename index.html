@@ -28,9 +28,13 @@
         padding: 0.5em;
         border-radius: 0.25em;
       }
+      #code {
+        display: none;
+      }
     </style>
   </head>
   <body>
+    <div id="code"></div>
     <div id="wrapper">
       <div id="content">
         <h1>Psalm 23</h1>
@@ -1255,15 +1259,19 @@
 
       function regen() {
         let transform = text;
+        let code = [];
 
         for (var property in synonymMap) {
           let item = Math.floor(Math.random() * synonymMap[property].length);
+
+          code.push(item.toString(36));
 
           transform = transform
             .split(`[${property}]`)
             .join(synonymMap[property][item]);
         }
 
+        document.getElementById("code").innerHTML = code.join("");
         document.getElementById("text").innerHTML = transform.replace(
           /\n/g,
           "<br/>"
