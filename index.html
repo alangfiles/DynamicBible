@@ -1,12 +1,46 @@
 <html>
   <head>
     <title>Dynamic Bible</title>
-    <style></style>
+    <style>
+      #wrapper {
+        display: flex;
+        justify-content: center;
+      }
+      #content {
+        margin-top: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: white;
+        padding: 1em;
+        border-radius: 1em;
+        box-shadow: 0 0 10px #888888;
+      }
+      p {
+        line-height: 0.9em;
+      }
+      body {
+        background-color: beige;
+        font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue",
+          "Helvetica", "Arial", sans-serif;
+      }
+      button {
+        padding: 0.5em;
+        border-radius: 0.25em;
+      }
+    </style>
   </head>
   <body>
-    <h1>Psalm 23</h1>
-    <p id="text"></p>
-    <button id="generate">Regenerate</button>
+    <div id="wrapper">
+      <div id="content">
+        <h1>Psalm 23</h1>
+        <p id="text"></p>
+        <div>
+          <br />
+          <center><button id="generate">Dynamic Translate</button></center>
+        </div>
+      </div>
+    </div>
     <script>
       const text = `The [LORD] is my [shepherd], I shall not [want].\n 
       He makes me [lay down] in [green] [pastures]\n 
@@ -102,24 +136,24 @@
           "unwind",
           "breathe easy",
           "calm down",
-          "catch one's breath",
+          "catch my breath",
           "chill out",
-          "collect oneself",
-          "compose oneself",
+          "collect myself",
+          "compose myself",
           "cool off",
           "feel at home",
           "hang loose",
           "loosen up",
-          "make oneself at home",
+          "make myself at home",
           "mellow out",
-          "put one's feet up",
+          "put my feet up",
           "rest",
           "settle back",
           "sit around",
           "take a break",
           "take a breather",
           "take a load off",
-          "take ten",
+          "take five",
           "wind down"
         ],
         green: [
@@ -527,7 +561,7 @@
         ],
         death: [
           "death",
-          "afterlife",
+          "the afterlife",
           "annihilation",
           "bereavement",
           "casualty",
@@ -550,16 +584,13 @@
           "extermination",
           "extinction",
           "fatality",
-          "finis",
-          "finish",
-          "grave",
-          "heaven",
+          "being finished",
+          "the grave",
           "loss",
           "mortality",
           "necrosis",
           "obliteration",
           "oblivion",
-          "paradise",
           "parting",
           "passing",
           "quietus",
@@ -570,9 +601,9 @@
           "silence",
           "sleep",
           "termination",
-          "tomb",
+          "the tomb",
           "eternal rest",
-          "grim reaper",
+          "the grim reaper",
           "passing over"
         ],
         fear: [
@@ -1130,11 +1161,11 @@
           "tarry",
           "tenant",
           "tent",
-          "establish oneself",
+          "establish myself",
           "hang my hat",
           "hang out",
           "keep house",
-          "make one's home",
+          "make my home",
           "pitch tent"
         ],
         house: [
@@ -1222,15 +1253,6 @@
         ]
       };
 
-      document.getElementById("generate").addEventListener("click", () => {
-        regen();
-      });
-
-      document.getElementById("text").innerHTML = text
-        .replace(/\n/g, "<br/>")
-        .replace(/\[/g, "")
-        .replace(/\]/g, "");
-
       function regen() {
         let transform = text;
 
@@ -1247,6 +1269,11 @@
           "<br/>"
         );
       }
+      document.getElementById("generate").addEventListener("click", () => {
+        regen();
+      });
+
+      regen();
     </script>
   </body>
 </html>
